@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    android:fillViewport="true"
+    android:theme="@style/Theme.TestCourses"
+    tools:context=".ui.fragment.CourseDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/guideline" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/guideline" />
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/course_cover_height"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/img_placeholder" />
+
+        <ImageView
+            android:id="@+id/fab_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/guideline"
+            android:background="@drawable/bg_fab_circle"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left"
+            android:tint="@color/dark"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UseAppTint" />
+
+        <ImageView
+            android:id="@+id/fab_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/guideline"
+            android:background="@drawable/bg_fab_circle"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_favorite_detail_selector"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/tv_rating"
+            style="@style/Text_Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:background="@drawable/bg_glass"
+            android:drawableStart="@drawable/ic_star_fill"
+            android:drawablePadding="4dp"
+            android:padding="@dimen/margin_4"
+            app:layout_constraintBottom_toBottomOf="@id/iv_cover"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="UseCompatTextViewDrawableXml"
+            tools:text="4.9" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/Text_Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_glass"
+            android:padding="@dimen/margin_4"
+            app:layout_constraintBottom_toBottomOf="@id/tv_rating"
+            app:layout_constraintStart_toEndOf="@id/tv_rating"
+            app:layout_constraintTop_toTopOf="@id/tv_rating"
+            tools:text="22 Мая 2024" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/Text_TitleLarge"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover"
+            tools:text="Java-разработчик" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/author_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="iv_author_cover, tv_secondary, tv_author_title" />
+
+        <ImageView
+            android:id="@+id/iv_author_cover"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_author"
+            android:clipToOutline="true"
+            android:contentDescription="@null"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:ignore="UnusedAttribute"
+            android:src="@drawable/author_placeholder" />
+
+        <TextView
+            android:id="@+id/tv_secondary"
+            style="@style/Text_Caption.Author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12"
+            android:text="@string/course_author"
+            app:layout_constraintEnd_toStartOf="@+id/right_border"
+            app:layout_constraintStart_toEndOf="@id/iv_author_cover"
+            app:layout_constraintTop_toTopOf="@id/iv_author_cover" />
+
+        <TextView
+            android:id="@+id/tv_author_title"
+            style="@style/Text_TitleMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/tv_secondary"
+            app:layout_constraintTop_toBottomOf="@id/tv_secondary"
+            android:text="Merion Academy" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:text="@string/course_start"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@+id/tv_author_title" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:backgroundTint="@color/dark_gray"
+            android:text="@string/course_go_platform"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@+id/btn_start" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            style="@style/Text_TitleLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_28"
+            android:text="@string/course_about"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/tv_login" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/Text_BodyMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/tv_about"
+            tools:text="У вас будет 7 видеоуроков в высоком качестве. На них спикер объясняет теорию и показывает как выполнять практические задания. Доступ к материалам сохраняется на 2 года
+Кроме теоретических материалов вас ждут тесты и практические задания. Они помогут лучше запомнить новую информацию и прокачать навыки, которые необходимы для реальной работы с RabbitMQ.
+" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

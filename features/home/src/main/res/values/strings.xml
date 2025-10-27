@@ -1,0 +1,4 @@
+<resources>
+    <string name="home_hint">Search courses...</string>
+    <string name="home_sort_text">По дате добавления</string>
+</resources>

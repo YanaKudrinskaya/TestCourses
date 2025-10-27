@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text_Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textSize">@dimen/text_size_headline</item>
+        <item name="lineHeight">@dimen/line_height_headline</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text_TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_size_title_large</item>
+        <item name="lineHeight">@dimen/line_height_title_large</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text_TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">@dimen/text_size_title_medium</item>
+        <item name="lineHeight">@dimen/line_height_title_medium</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_title_medium</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text_Button.Active" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Text_ButtonSmall">
+        <item name="android:fontFamily">@font/roboto_semibold</item>
+        <item name="lineHeight">@dimen/line_height_button_small</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_button_small</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text_ButtonSmall.Active">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Text_BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_size_body_medium</item>
+        <item name="lineHeight">@dimen/line_height_body_medium</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_tracking</item>
+        <item name="android:textColor">@color/text_description</item>
+    </style>
+
+    <style name="Text_BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">@dimen/text_size_body_small</item>
+        <item name="lineHeight">@dimen/line_height_body_small</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_button_small</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text_BodySmall.DescriptionCard">
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Text_Caption" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">@dimen/text_size_body_small</item>
+        <item name="lineHeight">@dimen/line_height_caption</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_button_small</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text_Caption.Author">
+        <item name="android:textColor">@color/text_author</item>
+    </style>
+</resources>

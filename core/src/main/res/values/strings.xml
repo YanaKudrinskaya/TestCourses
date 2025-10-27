@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestCourses</string>
+    <string name="home">Главная</string>
+    <string name="favorite">Избранное</string>
+    <string name="account">Аккаунт</string>
+    <string name="more">Подробнее</string>
+
+    <string name="price_format">%s ₽</string>
+</resources>

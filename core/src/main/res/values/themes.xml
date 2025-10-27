@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.TestCourses" parent="Theme.Material3Expressive.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/light_gray</item>
+        <item name="android:windowBackground">@color/dark</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurface">@color/dark_gray</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
+        <item name="colorSecondary">@color/green</item>
+        <item name="hintTextColor">@color/hint</item>
+        <item name="colorOnSecondaryContainer">@color/green</item>
+    </style>
+
+    <style name="Theme.TestCourses" parent="Base.Theme.TestCourses" />
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.TestCourses"
+    android:background="@color/dark"
+    tools:context=".ui.fragment.HomeFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/guideline" />
+
+    <EditText
+        android:id="@+id/et_search"
+        style="@style/EditTextBackground.Search"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_height_search"
+        android:layout_marginTop="@dimen/guideline"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:autofillHints="keyword"
+        android:hint="@string/home_hint"
+        android:inputType="text|textAutoComplete|textNoSuggestions"
+        app:layout_constraintEnd_toStartOf="@id/iv_filter"
+        app:layout_constraintStart_toStartOf="@id/left_border"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_filter"
+        android:layout_width="@dimen/edit_height_search"
+        android:layout_height="@dimen/edit_height_search"
+        android:background="@drawable/bg_login_field"
+        android:scaleType="center"
+        android:src="@drawable/ic_filter"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/et_search"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
+        app:layout_constraintTop_toTopOf="@id/et_search" />
+
+    <TextView
+        android:id="@+id/tv_sort"
+        style="@style/Text_Button.Active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/guideline"
+        android:text="@string/home_sort_text"
+        android:layout_marginEnd="@dimen/margin_2"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_arrow_down_up"
+        android:drawablePadding="@dimen/margin_4"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_courses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/guideline"
+        android:paddingBottom="@dimen/bottom_navigation_padding"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
+        app:layout_constraintStart_toStartOf="@id/left_border"
+        app:layout_constraintTop_toBottomOf="@id/tv_sort"
+        tools:itemCount="5"
+        tools:listitem="@layout/course_card"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stroke">1.5dp</dimen>
+    <dimen name="elevation">20dp</dimen>
+    <dimen name="toolbar">60dp</dimen>
+    <dimen name="course_cover_height">240dp</dimen>
+    <dimen name="edit_field_height">40dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="edit_height_search">56dp</dimen>
+    <dimen name="padding_search_icon">12dp</dimen>
+    <dimen name="fab_background_size">44dp</dimen>
+    <dimen name="fab_background_glass">28dp</dimen>
+
+    <dimen name="text_size_headline">28sp</dimen>
+    <dimen name="text_size_title_large">22sp</dimen>
+    <dimen name="text_size_title_medium">16sp</dimen>
+    <dimen name="text_size_body_medium">14sp</dimen>
+    <dimen name="text_size_body_small">12sp</dimen>
+
+    <dimen name="line_height_headline">36sp</dimen>
+    <dimen name="line_height_title_large">22sp</dimen>
+    <dimen name="line_height_body_medium">20sp</dimen>
+    <dimen name="line_height_title_medium">18sp</dimen>
+    <dimen name="line_height_body_small">16sp</dimen>
+    <dimen name="line_height_button_small">15sp</dimen>
+    <dimen name="line_height_caption">14sp</dimen>
+
+    <dimen name="letter_spacing_title_medium">0.015</dimen>
+    <dimen name="letter_spacing_tracking">0.025</dimen>
+    <dimen name="letter_spacing_button_small">0.04</dimen>
+
+    <dimen name="guideline">16dp</dimen>
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_28">28dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="bottom_navigation_padding">104dp</dimen>
+
+    <dimen name="radius">30dp</dimen>
+    <dimen name="radius_search">28dp</dimen>
+    <dimen name="radius_author">20dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="cover_radius">12dp</dimen>
+</resources>

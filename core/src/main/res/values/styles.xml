@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNav" parent="Widget.Material3Expressive.BottomNavigationView">
+        <item name="android:background">@drawable/bg_bottom_navigation</item>
+        <item name="elevation">@dimen/elevation</item>
+    </style>
+
+    <style name="EditTextBackground">
+        <item name="android:background">@drawable/bg_login_field</item>
+        <item name="android:textColorHint">?attr/hintTextColor</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAppearance">@style/Text_BodyMedium</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="EditTextBackground.Login">
+        <item name="android:paddingStart">@dimen/guideline</item>
+        <item name="android:imeOptions">actionDone</item>
+    </style>
+
+    <style name="EditTextBackground.Search">
+        <item name="android:paddingStart">@dimen/guideline</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:drawableStart">@drawable/ic_search</item>
+        <item name="android:drawablePadding">@dimen/padding_search_icon</item>
+    </style>
+
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#2683ED" />
+            <corners android:radius="@dimen/radius" />
+            <size android:height="40dp" />
+        </shape>
+    </item>
+
+    <item
+        android:drawable="@drawable/ic_vk"
+        android:gravity="center" />
+</layer-list>

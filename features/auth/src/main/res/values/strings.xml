@@ -1,0 +1,13 @@
+<resources>
+    <string name="auth_title">Вход</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_email_hint">example@gmail.com</string>
+    <string name="auth_password">Пароль</string>
+    <string name="auth_password_hint">Введите пароль</string>
+    <string name="auth_not_account">Нет аккаунта?</string>
+    <string name="auth_register"> Регистрация</string>
+    <string name="auth_forgot_password">Забыл пароль</string>
+    <string name="auth_vk_url">https://vk.com/</string>
+    <string name="auth_ok_url">https://ok.ru/</string>
+    <string name="auth_browser_not_found">Браузер не установлен</string>
+</resources>
