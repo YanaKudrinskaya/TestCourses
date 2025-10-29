@@ -11,7 +11,7 @@ import com.yanakudrinskaya.domain.favorite.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class CoursesRepositoryImpl(
+internal class CoursesRepositoryImpl(
     private val networkClient: NetworkClient,
     private val favoriteRepository: FavoriteRepository
 ) : CoursesRepository {

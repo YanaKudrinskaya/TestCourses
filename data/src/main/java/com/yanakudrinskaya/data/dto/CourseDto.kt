@@ -1,6 +1,6 @@
 package com.yanakudrinskaya.data.dto
 
-data class CourseDto(
+internal data class CourseDto(
     val id: Long,
     val title: String,
     val text: String,

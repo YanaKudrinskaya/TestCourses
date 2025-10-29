@@ -8,7 +8,7 @@ import com.yanakudrinskaya.data.dto.RequestDto
 import com.yanakudrinskaya.data.dto.Response
 import com.yanakudrinskaya.core.utils.ResponseStatus
 
-class LocalJsonClient : NetworkClient {
+internal class LocalJsonClient : NetworkClient {
 
     override suspend fun doRequest(dto: RequestDto): Response {
         return when (dto) {

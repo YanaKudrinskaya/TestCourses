@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class FavoriteRepositoryImpl(
+internal class FavoriteRepositoryImpl(
 //    private val favoriteCourseDao: FavoriteCourseDao,
 //    private val favoriteCourseMapper: FavoriteCourseMapper,
 ) : FavoriteRepository {

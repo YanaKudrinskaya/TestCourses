@@ -3,7 +3,7 @@ package com.yanakudrinskaya.data.mappers
 import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.data.db.entity.FavoriteCourseEntity
 
-class FavoriteCourseMapper {
+internal class FavoriteCourseMapper {
 
     fun map(course: Course): FavoriteCourseEntity {
         return FavoriteCourseEntity(

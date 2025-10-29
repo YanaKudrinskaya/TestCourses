@@ -1,5 +1,5 @@
 package com.yanakudrinskaya.data.dto
 
-data class CoursesResponse(
+internal data class CoursesResponse(
     val courses: List<CourseDto>
 ) : Response()

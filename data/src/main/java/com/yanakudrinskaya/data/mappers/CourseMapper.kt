@@ -3,7 +3,7 @@ package com.yanakudrinskaya.data.mappers
 import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.data.dto.CourseDto
 
-object CourseMapper {
+internal object CourseMapper {
     fun mapToDomain(dto: CourseDto): Course {
         return Course(
             id = dto.id,

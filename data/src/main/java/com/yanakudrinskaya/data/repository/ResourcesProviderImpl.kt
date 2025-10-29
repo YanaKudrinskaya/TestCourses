@@ -3,7 +3,7 @@ package com.yanakudrinskaya.data.repository
 import android.content.Context
 import com.yanakudrinskaya.core.utils.ResourcesProvider
 
-class ResourcesProviderImpl(
+internal class ResourcesProviderImpl(
     private val context: Context
 ) : ResourcesProvider {
 
