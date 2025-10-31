@@ -4,6 +4,7 @@ import com.yanakudrinskaya.data.dto.CoursesResponse
 import com.yanakudrinskaya.domain.courses.api.CoursesRepository
 import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.core.utils.ResponseStatus
+import com.yanakudrinskaya.core.utils.Result
 import com.yanakudrinskaya.data.NetworkClient
 import com.yanakudrinskaya.data.dto.RequestDto
 import com.yanakudrinskaya.data.mappers.CourseMapper
@@ -16,7 +17,7 @@ internal class CoursesRepositoryImpl(
     private val favoriteRepository: FavoriteRepository
 ) : CoursesRepository {
 
-    override fun getCourses(): Flow<List<Course>> = flow {
+    override fun getCourses(): Flow<Result<List<Course>>> = flow {
 
         val response = networkClient.doRequest(RequestDto.CoursesRequest)
 
@@ -29,9 +30,9 @@ internal class CoursesRepositoryImpl(
                     favoriteRepository.addToFavorite(course)
                 }
             }
-            emit(courses)
+            emit(Result.Success(courses))
         } else {
-            emit(emptyList())
+            emit(Result.Error(response.status))
         }
     }
 
@@ -46,12 +47,12 @@ internal class CoursesRepositoryImpl(
 
             if (courseDto != null) {
                 val course = CourseMapper.mapToDomain(courseDto)
-                Result.success(course)
+                Result.Success(course)
             } else {
-                Result.failure(Exception("Course with id $courseId not found"))
+                Result.Error(ResponseStatus.NOT_FOUND)
             }
         } else {
-            Result.failure(Exception("Failed to load courses: ${response.errorMessage}"))
+            Result.Error(response.status)
         }
     }
 }

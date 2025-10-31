@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.domain.courses.use_cases.GetCoursesUseCase
 import com.yanakudrinskaya.domain.courses.use_cases.GetSortedCoursesUseCase
 import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.core.utils.Result
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,14 +33,13 @@ internal class HomeViewModel(
         loadCoursesJob?.cancel()
 
         loadCoursesJob = viewModelScope.launch {
-            if (isSorted) {
-                getSortedCoursesUseCase().collect { courses ->
-                    coursesState.value = courses.toList()
-                }
+            val flow = if (isSorted) {
+                getSortedCoursesUseCase()
             } else {
-                getCoursesUseCase().collect { courses ->
-                    coursesState.value = courses
-                }
+                getCoursesUseCase()
+            }
+            flow.collect { result ->
+                coursesState.value =  if (result is Result.Success) result.data else emptyList()
             }
         }
     }

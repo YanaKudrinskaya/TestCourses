@@ -1,23 +1,22 @@
 package com.yanakudrinskaya.data.di
 
-import androidx.room.Room
 import com.google.gson.Gson
-import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.core.utils.ResourcesProvider
 import com.yanakudrinskaya.data.NetworkClient
-import com.yanakudrinskaya.data.db.AppDatabase
-import com.yanakudrinskaya.data.db.dao.FavoriteCourseDao
-import com.yanakudrinskaya.data.mappers.FavoriteCourseMapper
-import com.yanakudrinskaya.data.network.LocalJsonClient
+import com.yanakudrinskaya.data.network.CoursesApi
+import com.yanakudrinskaya.data.network.MockInterceptor
+import com.yanakudrinskaya.data.network.RetrofitNetworkClient
 import com.yanakudrinskaya.data.repository.CoursesRepositoryImpl
 import com.yanakudrinskaya.data.repository.FavoriteRepositoryImpl
 import com.yanakudrinskaya.data.repository.ResourcesProviderImpl
+import com.yanakudrinskaya.data.utils.NetworkManager
 import com.yanakudrinskaya.domain.courses.api.CoursesRepository
 import com.yanakudrinskaya.domain.favorite.FavoriteRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 val dataModule = module {
 
@@ -25,8 +24,25 @@ val dataModule = module {
 
     factory { Gson() }
 
+    single { NetworkManager(androidContext()) }
+
+    single {
+        OkHttpClient.Builder()
+            .addInterceptor(MockInterceptor())
+            .build()
+    }
+
+    single<CoursesApi> {
+        Retrofit.Builder()
+            .baseUrl("https://api.example.com/")
+            .client(get<OkHttpClient>())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(CoursesApi::class.java)
+    }
+
     single<NetworkClient> {
-        LocalJsonClient()
+        RetrofitNetworkClient(get(), get())
     }
 
 //    single<AppDatabase> {
