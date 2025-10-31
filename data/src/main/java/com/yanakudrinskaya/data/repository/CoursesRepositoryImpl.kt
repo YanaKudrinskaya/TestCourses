@@ -18,26 +18,24 @@ internal class CoursesRepositoryImpl(
 ) : CoursesRepository {
 
     override fun getCourses(): Flow<Result<List<Course>>> = flow {
-
         val response = networkClient.doRequest(RequestDto.CoursesRequest)
 
         if (response.status == ResponseStatus.SUCCESS && response is CoursesResponse) {
             val courses = response.courses.map { dto ->
                 CourseMapper.mapToDomain(dto)
             }
-            courses.forEach { course ->
-                if (course.hasLike) {
-                    favoriteRepository.addToFavorite(course)
-                }
+
+            val updatedCourses = courses.map { course ->
+                course.copy(hasLike = isCourseFavorite(course.id))
             }
-            emit(Result.Success(courses))
+
+            emit(Result.Success(updatedCourses))
         } else {
             emit(Result.Error(response.status))
         }
     }
 
     override suspend fun getCourseById(courseId: Long): Result<Course> {
-
         val response = networkClient.doRequest(RequestDto.CoursesRequest)
 
         return if (response.status == ResponseStatus.SUCCESS && response is CoursesResponse) {
@@ -47,12 +45,18 @@ internal class CoursesRepositoryImpl(
 
             if (courseDto != null) {
                 val course = CourseMapper.mapToDomain(courseDto)
-                Result.Success(course)
+                val isFavorite = isCourseFavorite(courseId)
+                val courseWithFavorite = course.copy(hasLike = isFavorite)
+                Result.Success(courseWithFavorite)
             } else {
                 Result.Error(ResponseStatus.NOT_FOUND)
             }
         } else {
             Result.Error(response.status)
         }
+    }
+
+    private suspend fun isCourseFavorite(courseId: Long): Boolean {
+        return favoriteRepository.isFavorite(courseId)
     }
 }

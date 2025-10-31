@@ -1,8 +1,11 @@
 package com.yanakudrinskaya.data.di
 
+import androidx.room.Room
 import com.google.gson.Gson
 import com.yanakudrinskaya.core.utils.ResourcesProvider
 import com.yanakudrinskaya.data.NetworkClient
+import com.yanakudrinskaya.data.db.AppDatabase
+import com.yanakudrinskaya.data.mappers.FavoriteCourseMapper
 import com.yanakudrinskaya.data.network.CoursesApi
 import com.yanakudrinskaya.data.network.MockInterceptor
 import com.yanakudrinskaya.data.network.RetrofitNetworkClient
@@ -45,27 +48,27 @@ val dataModule = module {
         RetrofitNetworkClient(get(), get())
     }
 
-//    single<AppDatabase> {
-//        Room.databaseBuilder(
-//            androidContext(),
-//            AppDatabase::class.java,
-//            "courses.db"
-//        )
-//            .fallbackToDestructiveMigration()
-//            .build()
-//    }
+    single<AppDatabase> {
+        Room.databaseBuilder(
+            androidContext(),
+            AppDatabase::class.java,
+            "courses.db"
+        )
+            .fallbackToDestructiveMigration()
+            .build()
+    }
 
-//    single<FavoriteCourseDao> {
-//        get<AppDatabase>().favoriteCourseDao()
-//    }
+    factory { FavoriteCourseMapper() }
 
-//    factory { FavoriteCourseMapper() }
+    single {
+        get<AppDatabase>().favoriteCourseDao()
+    }
 
     single<CoursesRepository> {
         CoursesRepositoryImpl(get(), get())
     }
 
     single<FavoriteRepository> {
-        FavoriteRepositoryImpl()
+        FavoriteRepositoryImpl(get(), get())
     }
 }

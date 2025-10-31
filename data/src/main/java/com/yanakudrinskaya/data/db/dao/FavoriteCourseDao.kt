@@ -17,4 +17,7 @@ interface FavoriteCourseDao {
 
     @Query("DELETE FROM favorite_courses WHERE id = :id")
     suspend fun removeById(id: Long)
+
+    @Query("SELECT COUNT(*) FROM favorite_courses WHERE id = :courseId")
+    suspend fun isFavorite(courseId: Long): Boolean
 }
