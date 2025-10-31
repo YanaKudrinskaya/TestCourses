@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.auth.R
 import com.yanakudrinskaya.auth.ui.state.LoginSocialState
 import com.yanakudrinskaya.auth.ui.state.LoginUiState
-import com.yanakudrinskaya.core.utils.EmailValidator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,9 +13,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import androidx.core.net.toUri
 import com.yanakudrinskaya.core.utils.ResourcesProvider
+import com.yanakudrinskaya.domain.auth.ValidateEmailUseCase
 
 internal class LoginViewModel(
-    private val resourcesProvider: ResourcesProvider
+    private val resourcesProvider: ResourcesProvider,
+    private val validateEmailUseCase: ValidateEmailUseCase
 ) : ViewModel() {
 
     private val uiState = MutableStateFlow<LoginUiState>(LoginUiState.Initial)
@@ -33,7 +34,7 @@ internal class LoginViewModel(
     }
 
     private fun LoginUiState.Input.validate(): LoginUiState.Input {
-        val isEmailValid = EmailValidator.isValid(email)
+        val isEmailValid = validateEmailUseCase(email)
         val isPasswordValid = password.isNotBlank()
         val isLoginButtonEnabled = isEmailValid && isPasswordValid
 

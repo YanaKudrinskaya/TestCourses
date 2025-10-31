@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.core.utils.Result
 import com.yanakudrinskaya.course.ui.models.CourseScreenState
 import com.yanakudrinskaya.domain.course.GetCourseByIdUseCase
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
@@ -29,19 +30,17 @@ internal class CourseDetailViewModel(
 
     private fun loadCourseModel(courseId: Long) {
         viewModelScope.launch {
-            val result = getCourseByIdUseCase.invoke(courseId)
-            if (result.isSuccess) {
-                val course = result.getOrNull()
-                if (course != null) {
+            when (val result = getCourseByIdUseCase.invoke(courseId)) {
+                is Result.Success -> {
+                    val course = result.data
                     currentCourse = course
                     screenStateLiveData.value = CourseScreenState.Content(course)
-                } else {
-                    screenStateLiveData.value = CourseScreenState.Error("Course not found")
                 }
-            } else {
-                screenStateLiveData.value = CourseScreenState.Error(
-                    result.exceptionOrNull()?.message ?: "Unknown error"
-                )
+                is Result.Error -> {
+                    screenStateLiveData.value = CourseScreenState.Error(
+                        message = result.message ?: "Failed to load course"
+                    )
+                }
             }
         }
     }
