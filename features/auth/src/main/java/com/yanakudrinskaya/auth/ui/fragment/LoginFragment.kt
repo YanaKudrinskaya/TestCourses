@@ -16,6 +16,7 @@ import com.yanakudrinskaya.auth.ui.state.LoginUiState
 import com.yanakudrinskaya.auth.ui.view_model.LoginViewModel
 import com.yanakudrinskaya.core.navigation.NavigationContract
 import com.yanakudrinskaya.core.navigation.NavigationVisibilityController
+import com.yanakudrinskaya.core.utils.CyrillicInputFilter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,10 +43,14 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as? NavigationVisibilityController)?.setNavigationVisibility(false)
 
+        setupEmailField()
         setupListeners()
         setupObserver()
     }
 
+    private fun setupEmailField() {
+        binding.etEmail.filters = arrayOf(CyrillicInputFilter())
+    }
     private fun setupObserver() {
         viewModel.getUiState()
             .onEach { state ->
