@@ -6,8 +6,9 @@ import com.yanakudrinskaya.core.utils.Result
 import com.yanakudrinskaya.domain.favorite.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import javax.inject.Inject
 
-class GetCoursesUseCase(
+class GetCoursesUseCase @Inject constructor(
     private val repository: CoursesRepository,
     private val favoriteRepository: FavoriteRepository
 ) {

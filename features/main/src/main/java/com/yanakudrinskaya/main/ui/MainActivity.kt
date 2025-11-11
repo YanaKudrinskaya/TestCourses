@@ -2,6 +2,7 @@ package com.yanakudrinskaya.main.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -10,14 +11,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yanakudrinskaya.core.navigation.NavigationContract
-import com.yanakudrinskaya.core.navigation.NavigationVisibilityController
 import com.yanakudrinskaya.main.R
 import com.yanakudrinskaya.main.databinding.ActivityMainBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), NavigationVisibilityController, NavigationContract {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
-    internal val viewModel by viewModel<MainViewModel>()
+    private val viewModel: MainViewModel by viewModels()
+    @Inject
+    lateinit var navigator: NavigationContract
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,37 +42,21 @@ class MainActivity : AppCompatActivity(), NavigationVisibilityController, Naviga
             .findFragmentById(R.id.container_view) as NavHostFragment
         val navController = navHostFragment.navController
 
+        navigator.setNavController(navController)
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val shouldShowBottomNav = when (destination.id) {
+                R.id.loginFragment, R.id.courseDetailFragment -> false
+                else -> true
+            }
+            viewModel.setNavigationVisible(shouldShowBottomNav)
+        }
 
         viewModel.getNavigationEvents().observe(this) { isVisible ->
             bottomNavigationView.isVisible = isVisible
         }
-    }
-
-    override fun setNavigationVisibility(visible: Boolean) {
-        viewModel.setNavigationVisible(visible)
-    }
-
-    override fun navigateToHome() {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.container_view) as NavHostFragment
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.action_login_to_main)
-    }
-
-    override fun navigateToCourseDetail(courseId: Long) {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.container_view) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        val bundle = Bundle().apply {
-            putLong(COURSE_ID, courseId)
-        }
-        navController.navigate(R.id.courseDetailFragment, bundle)
-    }
-
-    companion object {
-        const val COURSE_ID = "courseId"
     }
 }

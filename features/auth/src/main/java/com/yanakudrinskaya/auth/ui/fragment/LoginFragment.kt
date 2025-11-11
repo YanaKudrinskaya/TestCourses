@@ -9,25 +9,28 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.yanakudrinskaya.auth.databinding.FragmentLoginBinding
 import com.yanakudrinskaya.auth.ui.state.LoginSocialState
 import com.yanakudrinskaya.auth.ui.state.LoginUiState
 import com.yanakudrinskaya.auth.ui.view_model.LoginViewModel
 import com.yanakudrinskaya.core.navigation.NavigationContract
-import com.yanakudrinskaya.core.navigation.NavigationVisibilityController
+import com.yanakudrinskaya.core.navigation.NavigationDestination
 import com.yanakudrinskaya.core.utils.CyrillicInputFilter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModel<LoginViewModel>()
+    private val viewModel: LoginViewModel by viewModels()
 
-    private val navigationContract: NavigationContract?
-        get() = activity as? NavigationContract
+    @Inject
+    lateinit var navigator: NavigationContract
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +44,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? NavigationVisibilityController)?.setNavigationVisibility(false)
 
         setupEmailField()
         setupListeners()
@@ -117,7 +119,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToMainScreen() {
-        navigationContract?.navigateToHome()
+        navigator.navigateTo(
+            destination = NavigationDestination.Main,
+            popUpTo = NavigationDestination.Login
+        )
     }
 
     private fun showErrorState(message: String?) {
@@ -125,7 +130,6 @@ class LoginFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        (activity as? NavigationVisibilityController)?.setNavigationVisibility(true)
         super.onDestroyView()
         _binding = null
     }

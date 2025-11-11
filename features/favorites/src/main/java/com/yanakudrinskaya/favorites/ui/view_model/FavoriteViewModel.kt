@@ -4,13 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-internal class FavoriteViewModel(
+@HiltViewModel
+internal class FavoriteViewModel @Inject constructor(
     private val favoriteInteractor: FavoriteInteractor
 ) : ViewModel() {
 

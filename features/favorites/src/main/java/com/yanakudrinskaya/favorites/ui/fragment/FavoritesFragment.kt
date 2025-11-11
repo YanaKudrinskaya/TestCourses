@@ -5,22 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.yanakudrinskaya.core.adapter.CoursesAdapter
 import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.core.navigation.NavigationContract
+import com.yanakudrinskaya.core.navigation.NavigationDestination
 import com.yanakudrinskaya.core.ui.decorator.ItemOffsetDecoration
 import com.yanakudrinskaya.favorites.databinding.FragmentFavoritesBinding
 import com.yanakudrinskaya.favorites.ui.view_model.FavoriteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by viewModel<FavoriteViewModel>()
+    private val viewModel: FavoriteViewModel by viewModels()
+    @Inject
+    lateinit var navigator: NavigationContract
 
     private var _coursesAdapter: CoursesAdapter? = null
     private val coursesAdapter get() = _coursesAdapter!!
@@ -71,7 +77,9 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun onCourseClick(course: Course) {
-        navigationContract?.navigateToCourseDetail(course.id)
+        navigator.navigateTo(
+            destination = NavigationDestination.CourseDetail(course.id)
+        )
     }
 
     private fun onLikeClick(course: Course) {

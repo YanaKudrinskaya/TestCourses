@@ -22,11 +22,11 @@ dependencyResolutionManagement {
 rootProject.name = "TestCourses"
 include(":app")
 include(":core")
-include(":domain")
 include(":data")
+include(":domain")
+include(":features:main")
 include(":features:auth")
 include(":features:home")
 include(":features:favorites")
 include(":features:account")
 include(":features:course")
-include(":features:main")

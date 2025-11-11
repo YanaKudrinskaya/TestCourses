@@ -2,6 +2,7 @@ package com.yanakudrinskaya.course.ui.view_model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.core.models.Course
@@ -9,14 +10,19 @@ import com.yanakudrinskaya.core.utils.Result
 import com.yanakudrinskaya.course.ui.models.CourseScreenState
 import com.yanakudrinskaya.domain.course.GetCourseByIdUseCase
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-internal class CourseDetailViewModel(
-    private val courseId: Long,
+@HiltViewModel
+internal class CourseDetailViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
     private val getCourseByIdUseCase: GetCourseByIdUseCase,
     private val favoriteInteractor: FavoriteInteractor
 ) : ViewModel() {
+
+    private val courseId: Long get() = savedStateHandle.get<Long>("courseId") ?: -1L
 
     private var screenStateLiveData = MutableLiveData<CourseScreenState>()
     fun getScreenStateLiveData(): LiveData<CourseScreenState> = screenStateLiveData

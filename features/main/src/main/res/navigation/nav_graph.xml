@@ -8,14 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.yanakudrinskaya.auth.ui.fragment.LoginFragment"
-        android:label="LoginFragment">
-
-        <action
-            android:id="@+id/action_login_to_main"
-            app:destination="@id/main_navigation"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        android:label="LoginFragment" />
 
     <navigation
         android:id="@+id/main_navigation"
@@ -24,20 +17,12 @@
         <fragment
             android:id="@+id/coursesFragment"
             android:name="com.yanakudrinskaya.home.ui.fragment.HomeFragment"
-            android:label="CoursesFragment">
-            <action
-                android:id="@+id/action_coursesFragment_to_courseDetailFragment"
-                app:destination="@id/courseDetailFragment" />
-        </fragment>
+            android:label="CoursesFragment" />
 
         <fragment
             android:id="@+id/favoritesFragment"
             android:name="com.yanakudrinskaya.favorites.ui.fragment.FavoritesFragment"
-            android:label="FavoritesFragment">
-            <action
-                android:id="@+id/action_favoritesFragment_to_courseDetailFragment"
-                app:destination="@id/courseDetailFragment" />
-        </fragment>
+            android:label="FavoritesFragment" />
 
         <fragment
             android:id="@+id/accountFragment"
@@ -53,9 +38,6 @@
 
         <argument
             android:name="courseId"
-            android:defaultValue="0L"
             app:argType="long" />
-
     </fragment>
-
 </navigation>

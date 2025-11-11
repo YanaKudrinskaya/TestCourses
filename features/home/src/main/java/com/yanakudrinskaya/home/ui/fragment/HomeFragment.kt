@@ -5,29 +5,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.yanakudrinskaya.core.R
 import com.yanakudrinskaya.core.adapter.CoursesAdapter
 import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.core.navigation.NavigationContract
+import com.yanakudrinskaya.core.navigation.NavigationDestination
 import com.yanakudrinskaya.core.ui.decorator.ItemOffsetDecoration
 import com.yanakudrinskaya.home.databinding.FragmentHomeBinding
 import com.yanakudrinskaya.home.ui.view_model.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 import kotlin.getValue
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomeViewModel by viewModel()
-
+    private val viewModel: HomeViewModel by viewModels()
+    @Inject
+    lateinit var navigator: NavigationContract
     private var _coursesAdapter: CoursesAdapter? = null
     private val coursesAdapter get() = _coursesAdapter!!
-    private val navigationContract: NavigationContract?
-        get() = activity as? NavigationContract
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,7 +83,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCourseClick(course: Course) {
-        navigationContract?.navigateToCourseDetail(course.id)
+        navigator.navigateTo(
+            destination = NavigationDestination.CourseDetail(course.id)
+        )
     }
 
     private fun onLikeClick(course: Course) {

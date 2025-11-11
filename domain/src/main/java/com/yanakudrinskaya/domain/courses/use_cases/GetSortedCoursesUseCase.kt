@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
 import java.util.Locale
+import javax.inject.Inject
 
-class GetSortedCoursesUseCase(
+class GetSortedCoursesUseCase @Inject constructor(
     private val repository: CoursesRepository
 ) {
     operator fun invoke(): Flow<Result<List<Course>>> {

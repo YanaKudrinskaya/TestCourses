@@ -5,8 +5,11 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
+import javax.inject.Inject
+import javax.inject.Singleton
 
-internal class MockInterceptor: Interceptor {
+@Singleton
+internal class MockInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         return when {
             chain.request().url.encodedPath.contains("/courses") -> {

@@ -6,8 +6,11 @@ import com.yanakudrinskaya.data.dto.CoursesResponse
 import com.yanakudrinskaya.data.dto.RequestDto
 import com.yanakudrinskaya.data.dto.Response
 import com.yanakudrinskaya.data.utils.NetworkManager
+import javax.inject.Inject
+import javax.inject.Singleton
 
-internal class RetrofitNetworkClient(
+@Singleton
+class RetrofitNetworkClient @Inject constructor(
     private val coursesApiService: CoursesApi,
     private val networkManager: NetworkManager
 ) : NetworkClient {

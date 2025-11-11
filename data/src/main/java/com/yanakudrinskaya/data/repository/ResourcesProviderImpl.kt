@@ -2,9 +2,13 @@ package com.yanakudrinskaya.data.repository
 
 import android.content.Context
 import com.yanakudrinskaya.core.utils.ResourcesProvider
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-internal class ResourcesProviderImpl(
-    private val context: Context
+@Singleton
+class ResourcesProviderImpl @Inject constructor(
+    @ApplicationContext private val context: Context
 ) : ResourcesProvider {
 
     override fun getString(resId: Int): String {

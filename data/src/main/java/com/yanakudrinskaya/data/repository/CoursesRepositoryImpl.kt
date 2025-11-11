@@ -11,8 +11,11 @@ import com.yanakudrinskaya.data.mappers.CourseMapper
 import com.yanakudrinskaya.domain.favorite.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-internal class CoursesRepositoryImpl(
+@Singleton
+class CoursesRepositoryImpl @Inject constructor(
     private val networkClient: NetworkClient,
     private val favoriteRepository: FavoriteRepository
 ) : CoursesRepository {
