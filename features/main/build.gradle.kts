@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation.safeargs)
+    id("kotlin-kapt")
+    alias(libs.plugins.google.dagger.hilt.android)
 }
 
 android {
@@ -39,21 +41,21 @@ android {
 
 dependencies {
     implementation(project(":core"))
+
     implementation(project(":features:auth"))
     implementation(project(":features:home"))
     implementation(project(":features:favorites"))
     implementation(project(":features:account"))
     implementation(project(":features:course"))
-    implementation(project(":data"))
-    implementation(project(":domain"))
-
-    // Activity
-    implementation(libs.androidx.activity)
 
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    // Koin
-    implementation(libs.koin.android)
+    // Activity
+    implementation(libs.androidx.activity.ktx)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt (libs.hilt.compiler)
 }

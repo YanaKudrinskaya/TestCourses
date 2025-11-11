@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    alias(libs.plugins.google.dagger.hilt.android)
 }
 
 android {
@@ -39,5 +41,18 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
     implementation(project(":features:main"))
+    implementation(project(":features:auth"))
+    implementation(project(":features:home"))
+    implementation(project(":features:favorites"))
+    implementation(project(":features:account"))
+    implementation(project(":features:course"))
+
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt (libs.hilt.compiler)
 }

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    alias(libs.plugins.google.dagger.hilt.android)
 }
 
 android {
@@ -52,12 +54,16 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 
     // Navigation
-    api(libs.androidx.navigation.fragment.ktx)
-    api(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Fragment
-    api(libs.androidx.fragment.ktx)
+//    api(libs.androidx.fragment.ktx)
 
     // Glide
     implementation(libs.glide)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt (libs.hilt.compiler)
 }
