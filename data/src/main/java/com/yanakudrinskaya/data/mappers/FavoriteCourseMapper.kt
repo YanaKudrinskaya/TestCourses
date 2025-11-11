@@ -4,7 +4,7 @@ import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.data.db.entity.FavoriteCourseEntity
 import javax.inject.Inject
 
-class FavoriteCourseMapper @Inject constructor() {
+internal class FavoriteCourseMapper @Inject constructor() {
 
     fun map(course: Course): FavoriteCourseEntity {
         return FavoriteCourseEntity(

@@ -41,12 +41,12 @@ android {
 
 dependencies {
     implementation(project(":core"))
-
-    implementation(project(":features:auth"))
-    implementation(project(":features:home"))
-    implementation(project(":features:favorites"))
-    implementation(project(":features:account"))
-    implementation(project(":features:course"))
+//
+//    implementation(project(":features:auth"))
+//    implementation(project(":features:home"))
+//    implementation(project(":features:favorites"))
+//    implementation(project(":features:account"))
+//    implementation(project(":features:course"))
 
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)

@@ -36,7 +36,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    internal fun provideOkHttpClient(mockInterceptor: MockInterceptor): OkHttpClient{
+    internal fun provideOkHttpClient(mockInterceptor: MockInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(mockInterceptor)
             .build()
@@ -44,7 +44,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideCoursesApi(okHttpClient: OkHttpClient): CoursesApi {
+    internal fun provideCoursesApi(okHttpClient: OkHttpClient): CoursesApi {
         return Retrofit.Builder()
             .baseUrl("https://api.example.com/")
             .client(okHttpClient)
@@ -75,19 +75,17 @@ abstract class BindingModule {
 
     @Binds
     @Singleton
-    abstract fun bindNetworkClient(impl: RetrofitNetworkClient): NetworkClient
+    internal abstract fun bindNetworkClient(impl: RetrofitNetworkClient): NetworkClient
 
     @Binds
     @Singleton
-    abstract fun bindCoursesRepository(impl: CoursesRepositoryImpl): CoursesRepository
+    internal abstract fun bindCoursesRepository(impl: CoursesRepositoryImpl): CoursesRepository
 
     @Binds
     @Singleton
-    abstract fun bindFavoriteRepository(impl: FavoriteRepositoryImpl): FavoriteRepository
+    internal abstract fun bindFavoriteRepository(impl: FavoriteRepositoryImpl): FavoriteRepository
 
     @Binds
     @Singleton
-    abstract fun bindResourcesProvider(
-        impl: ResourcesProviderImpl
-    ): ResourcesProvider
+    internal abstract fun bindResourcesProvider(impl: ResourcesProviderImpl): ResourcesProvider
 }

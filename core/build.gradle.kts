@@ -57,9 +57,6 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    // Fragment
-//    api(libs.androidx.fragment.ktx)
-
     // Glide
     implementation(libs.glide)
 

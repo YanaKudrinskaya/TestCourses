@@ -15,7 +15,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CoursesRepositoryImpl @Inject constructor(
+class CoursesRepositoryImpl @Inject internal constructor(
     private val networkClient: NetworkClient,
     private val favoriteRepository: FavoriteRepository
 ) : CoursesRepository {

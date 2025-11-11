@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RetrofitNetworkClient @Inject constructor(
+internal class RetrofitNetworkClient @Inject constructor(
     private val coursesApiService: CoursesApi,
     private val networkManager: NetworkManager
 ) : NetworkClient {

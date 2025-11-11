@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class NetworkManager @Inject constructor(
+internal class NetworkManager @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
     fun isConnected(): Boolean {

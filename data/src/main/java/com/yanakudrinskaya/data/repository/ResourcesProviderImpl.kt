@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ResourcesProviderImpl @Inject constructor(
+class ResourcesProviderImpl @Inject internal constructor(
     @ApplicationContext private val context: Context
 ) : ResourcesProvider {
 

@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FavoriteRepositoryImpl @Inject constructor(
+class FavoriteRepositoryImpl @Inject internal constructor(
     private val favoriteCourseMapper: FavoriteCourseMapper,
     private val favoriteCourseDao: FavoriteCourseDao
 ) : FavoriteRepository {
