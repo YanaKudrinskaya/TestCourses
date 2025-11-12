@@ -1,7 +1,7 @@
 package com.yanakudrinskaya.domain.courses.api
 
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.Result
 import kotlinx.coroutines.flow.Flow
 
 interface CoursesRepository {

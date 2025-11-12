@@ -4,16 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.domain.courses.use_cases.GetCoursesUseCase
 import com.yanakudrinskaya.domain.courses.use_cases.GetSortedCoursesUseCase
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.Result
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-internal class HomeViewModel(
+@HiltViewModel
+internal class HomeViewModel @Inject constructor(
     private val getCoursesUseCase: GetCoursesUseCase,
     private val getSortedCoursesUseCase: GetSortedCoursesUseCase,
     private val favoriteInteractor: FavoriteInteractor

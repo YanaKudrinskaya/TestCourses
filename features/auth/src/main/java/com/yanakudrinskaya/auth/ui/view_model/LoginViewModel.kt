@@ -12,12 +12,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import androidx.core.net.toUri
-import com.yanakudrinskaya.core.utils.ResourcesProvider
+import com.yanakudrinskaya.domain.ResourcesProvider
 import com.yanakudrinskaya.domain.auth.ValidateEmailUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-internal class LoginViewModel(
-    private val resourcesProvider: ResourcesProvider,
-    private val validateEmailUseCase: ValidateEmailUseCase
+@HiltViewModel
+internal class LoginViewModel @Inject constructor(
+    private val validateEmailUseCase: ValidateEmailUseCase,
+    private val resourcesProvider: ResourcesProvider
 ) : ViewModel() {
 
     private val uiState = MutableStateFlow<LoginUiState>(LoginUiState.Initial)

@@ -1,6 +1,6 @@
 package com.yanakudrinskaya.domain.favorite
 
-import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.domain.models.Course
 import kotlinx.coroutines.flow.Flow
 
 interface FavoriteRepository {

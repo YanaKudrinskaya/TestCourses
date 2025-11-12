@@ -1,30 +1,20 @@
 package com.yanakudrinskaya.domain.di
 
-import com.yanakudrinskaya.domain.auth.ValidateEmailUseCase
-import com.yanakudrinskaya.domain.course.GetCourseByIdUseCase
-import com.yanakudrinskaya.domain.courses.use_cases.GetCoursesUseCase
-import com.yanakudrinskaya.domain.courses.use_cases.GetSortedCoursesUseCase
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
 import com.yanakudrinskaya.domain.favorite.impl.FavoriteInteractorImpl
-import org.koin.dsl.module
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-val domainModule = module {
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class DomainModule {
 
-    factory { ValidateEmailUseCase() }
-
-    factory {
-        GetCoursesUseCase(get(), get())
-    }
-
-    factory {
-        GetSortedCoursesUseCase(get())
-    }
-
-    factory {
-        GetCourseByIdUseCase(get())
-    }
-
-    factory<FavoriteInteractor> {
-        FavoriteInteractorImpl(get())
-    }
+    @Binds
+    @Singleton
+    abstract fun bindFavoriteInteractor(
+        impl: FavoriteInteractorImpl
+    ): FavoriteInteractor
 }

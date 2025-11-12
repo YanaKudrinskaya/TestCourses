@@ -1,8 +1,8 @@
 package com.yanakudrinskaya.data.dto
 
-import com.yanakudrinskaya.core.utils.ResponseStatus
+import com.yanakudrinskaya.domain.utils.ResponseStatus
 
-internal open class Response {
+open class Response {
     var status: ResponseStatus = ResponseStatus.UNKNOWN_ERROR
     var errorMessage: String? = null
 }

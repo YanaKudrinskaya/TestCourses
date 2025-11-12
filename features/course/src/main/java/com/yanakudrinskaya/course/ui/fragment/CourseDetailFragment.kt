@@ -5,41 +5,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.yanakudrinskaya.core.navigation.NavigationVisibilityController
+import androidx.fragment.app.viewModels
+import com.yanakudrinskaya.core.navigation.NavigationContract
 import com.yanakudrinskaya.core.utils.formatDate
 import com.yanakudrinskaya.course.databinding.FragmentCourseDetailBinding
 import com.yanakudrinskaya.course.ui.models.CourseScreenState
 import com.yanakudrinskaya.course.ui.view_model.CourseDetailViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.getValue
 
+@AndroidEntryPoint
 class CourseDetailFragment : Fragment() {
 
     private var _binding: FragmentCourseDetailBinding? = null
     private val binding get() = _binding!!
-
-    private val courseId: Long by lazy {
-        arguments?.getLong("courseId", 0L) ?: 0L
-    }
-
-    private val viewModel by viewModel<CourseDetailViewModel> {
-        parametersOf(courseId)
-    }
+    @Inject
+    lateinit var navigator: NavigationContract
+    private val viewModel: CourseDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentCourseDetailBinding.inflate(inflater, container, false)
+    ): View {
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? NavigationVisibilityController)?.setNavigationVisibility(false)
 
         setupClickListeners()
         setupObservers()
@@ -47,7 +41,7 @@ class CourseDetailFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.fabBack.setOnClickListener {
-            findNavController().navigateUp()
+            navigator.navigateBack()
         }
 
         binding.fabBookmark.setOnClickListener {
@@ -75,7 +69,6 @@ class CourseDetailFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        (activity as? NavigationVisibilityController)?.setNavigationVisibility(true)
         super.onDestroyView()
         _binding = null
     }

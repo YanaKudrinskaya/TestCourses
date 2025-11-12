@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.yanakudrinskaya.auth.ui.fragment.LoginFragment"
+        android:label="LoginFragment" />
+
+    <navigation
+        android:id="@+id/main_nav_graph"
+        app:startDestination="@id/coursesFragment">
+
+        <fragment
+            android:id="@+id/coursesFragment"
+            android:name="com.yanakudrinskaya.home.ui.fragment.HomeFragment"
+            android:label="CoursesFragment" />
+
+        <fragment
+            android:id="@+id/favoritesFragment"
+            android:name="com.yanakudrinskaya.favorites.ui.fragment.FavoritesFragment"
+            android:label="FavoritesFragment" />
+
+        <fragment
+            android:id="@+id/accountFragment"
+            android:name="com.yanakudrinskaya.account.fragment.AccountFragment"
+            android:label="AccountFragment" />
+    </navigation>
+
+    <fragment
+        android:id="@+id/courseDetailFragment"
+        android:name="com.yanakudrinskaya.course.ui.fragment.CourseDetailFragment"
+        android:label="CourseDetailFragment">
+
+        <argument
+            android:name="courseId"
+            app:argType="long" />
+    </fragment>
+</navigation>

@@ -1,5 +1,5 @@
 package com.yanakudrinskaya.data.dto
 
-internal sealed interface RequestDto {
+sealed interface RequestDto {
     data object CoursesRequest : RequestDto
 }

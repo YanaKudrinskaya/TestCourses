@@ -2,17 +2,20 @@ package com.yanakudrinskaya.data.repository
 
 import com.yanakudrinskaya.data.dto.CoursesResponse
 import com.yanakudrinskaya.domain.courses.api.CoursesRepository
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.ResponseStatus
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.ResponseStatus
+import com.yanakudrinskaya.domain.utils.Result
 import com.yanakudrinskaya.data.NetworkClient
 import com.yanakudrinskaya.data.dto.RequestDto
 import com.yanakudrinskaya.data.mappers.CourseMapper
 import com.yanakudrinskaya.domain.favorite.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-internal class CoursesRepositoryImpl(
+@Singleton
+class CoursesRepositoryImpl @Inject internal constructor(
     private val networkClient: NetworkClient,
     private val favoriteRepository: FavoriteRepository
 ) : CoursesRepository {

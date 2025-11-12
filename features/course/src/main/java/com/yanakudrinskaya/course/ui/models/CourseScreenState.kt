@@ -1,6 +1,6 @@
 package com.yanakudrinskaya.course.ui.models
 
-import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.domain.models.Course
 
 internal sealed class CourseScreenState {
     data class Content(
