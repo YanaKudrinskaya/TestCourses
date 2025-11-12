@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.main.ui
+package com.yanakudrinskaya.testcourses.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

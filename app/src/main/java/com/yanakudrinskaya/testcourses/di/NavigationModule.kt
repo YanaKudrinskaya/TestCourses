@@ -1,20 +1,16 @@
-package com.yanakudrinskaya.core.di
+package com.yanakudrinskaya.testcourses.di
 
-import com.yanakudrinskaya.core.navigation.AppNavigatorImpl
 import com.yanakudrinskaya.core.navigation.NavigationContract
+import com.yanakudrinskaya.testcourses.navigation.AppNavigator
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class NavigationModule {
 
     @Binds
-    @Singleton
-    abstract fun bindNavigationContract(
-        impl: AppNavigatorImpl
-    ): NavigationContract
+    abstract fun bindNavigationContract(impl: AppNavigator): NavigationContract
 }

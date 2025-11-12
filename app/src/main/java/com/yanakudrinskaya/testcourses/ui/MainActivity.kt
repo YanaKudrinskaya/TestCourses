@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.main.ui
+package com.yanakudrinskaya.testcourses.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,11 +8,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yanakudrinskaya.core.navigation.NavigationContract
-import com.yanakudrinskaya.main.R
-import com.yanakudrinskaya.main.databinding.ActivityMainBinding
+import com.yanakudrinskaya.core.navigation.NavigationDestination
+import com.yanakudrinskaya.testcourses.R
+import com.yanakudrinskaya.testcourses.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -45,16 +45,21 @@ class MainActivity : AppCompatActivity(){
         navigator.setNavController(navController)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.setupWithNavController(navController)
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            val shouldShowBottomNav = when (destination.id) {
-                R.id.loginFragment, R.id.courseDetailFragment -> false
-                else -> true
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.coursesFragment -> navigator.navigateTo(NavigationDestination.Home)
+                R.id.favoritesFragment -> navigator.navigateTo(NavigationDestination.Favorites)
+                R.id.accountFragment -> navigator.navigateTo(NavigationDestination.Account)
             }
-            viewModel.setNavigationVisible(shouldShowBottomNav)
+            true
         }
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val destinationId = destination.id
+            val shouldShowBottomNav = navigator.shouldShowBottomNav(destinationId)
+            viewModel.setNavigationVisible(shouldShowBottomNav)
+        }
         viewModel.getNavigationEvents().observe(this) { isVisible ->
             bottomNavigationView.isVisible = isVisible
         }

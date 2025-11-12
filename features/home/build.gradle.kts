@@ -45,10 +45,6 @@ dependencies {
     // Fragment
     implementation(libs.androidx.fragment.ktx)
 
-    // Navigation
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-
     // UI
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
@@ -56,4 +52,7 @@ dependencies {
     //Hilt
     implementation(libs.hilt.android)
     kapt (libs.hilt.compiler)
+
+    // Glide
+    implementation(libs.glide)
 }

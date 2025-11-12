@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
@@ -11,7 +10,7 @@
         android:label="LoginFragment" />
 
     <navigation
-        android:id="@+id/main_navigation"
+        android:id="@+id/main_nav_graph"
         app:startDestination="@id/coursesFragment">
 
         <fragment
@@ -28,7 +27,6 @@
             android:id="@+id/accountFragment"
             android:name="com.yanakudrinskaya.account.fragment.AccountFragment"
             android:label="AccountFragment" />
-
     </navigation>
 
     <fragment
