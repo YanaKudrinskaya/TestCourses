@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.core.utils
+package com.yanakudrinskaya.domain.utils
 
 enum class ResponseStatus {
     SUCCESS, // Успешный запрос (200)

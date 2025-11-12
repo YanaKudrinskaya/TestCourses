@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import androidx.core.net.toUri
-import com.yanakudrinskaya.core.utils.ResourcesProvider
+import com.yanakudrinskaya.domain.ResourcesProvider
 import com.yanakudrinskaya.domain.auth.ValidateEmailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanakudrinskaya.domain.courses.use_cases.GetCoursesUseCase
 import com.yanakudrinskaya.domain.courses.use_cases.GetSortedCoursesUseCase
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.Result
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject

@@ -1,9 +1,9 @@
 package com.yanakudrinskaya.data.repository
 
-import com.yanakudrinskaya.core.models.Course
 import com.yanakudrinskaya.data.db.dao.FavoriteCourseDao
 import com.yanakudrinskaya.data.mappers.FavoriteCourseMapper
 import com.yanakudrinskaya.domain.favorite.FavoriteRepository
+import com.yanakudrinskaya.domain.models.Course
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

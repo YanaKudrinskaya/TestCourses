@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.core.utils
+package com.yanakudrinskaya.domain.utils
 
 sealed class Result<out T> {
     data class Success<out T>(val data: T) : Result<T>()

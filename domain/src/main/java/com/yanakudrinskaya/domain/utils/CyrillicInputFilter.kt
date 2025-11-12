@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.core.utils
+package com.yanakudrinskaya.domain.utils
 
 import android.text.InputFilter
 import android.text.Spanned

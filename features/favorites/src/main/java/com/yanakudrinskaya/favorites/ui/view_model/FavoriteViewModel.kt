@@ -2,7 +2,7 @@ package com.yanakudrinskaya.favorites.ui.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.domain.models.Course
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject

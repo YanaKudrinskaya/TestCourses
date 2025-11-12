@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
-    alias(libs.plugins.google.dagger.hilt.android)
 }
 
 android {
@@ -39,9 +37,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.appcompat)
+    api(libs.androidx.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,10 +55,4 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    // Glide
-    implementation(libs.glide)
-
-    //Hilt
-    implementation(libs.hilt.android)
-    kapt (libs.hilt.compiler)
 }

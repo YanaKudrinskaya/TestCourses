@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.yanakudrinskaya.core.R
-import com.yanakudrinskaya.core.adapter.CoursesAdapter
-import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.domain.models.Course
 import com.yanakudrinskaya.core.navigation.NavigationContract
 import com.yanakudrinskaya.core.navigation.NavigationDestination
 import com.yanakudrinskaya.core.ui.decorator.ItemOffsetDecoration
 import com.yanakudrinskaya.home.databinding.FragmentHomeBinding
+import com.yanakudrinskaya.home.ui.adapter.HomeCoursesAdapter
 import com.yanakudrinskaya.home.ui.view_model.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     @Inject
     lateinit var navigator: NavigationContract
-    private var _coursesAdapter: CoursesAdapter? = null
+    private var _coursesAdapter: HomeCoursesAdapter? = null
     private val coursesAdapter get() = _coursesAdapter!!
 
     override fun onCreateView(
@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        _coursesAdapter = CoursesAdapter(
+        _coursesAdapter = HomeCoursesAdapter(
             onItemClick = { course ->
                 onCourseClick(course)
             },

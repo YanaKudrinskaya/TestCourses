@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.Result
 import com.yanakudrinskaya.course.ui.models.CourseScreenState
 import com.yanakudrinskaya.domain.course.GetCourseByIdUseCase
 import com.yanakudrinskaya.domain.favorite.FavoriteInteractor

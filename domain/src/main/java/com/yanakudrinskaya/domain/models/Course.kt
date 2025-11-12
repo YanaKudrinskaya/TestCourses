@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.core.models
+package com.yanakudrinskaya.domain.models
 
 data class Course(
     val id: Long,

@@ -1,4 +1,4 @@
-package com.yanakudrinskaya.core.utils
+package com.yanakudrinskaya.domain
 
 interface ResourcesProvider {
     fun getString(resId: Int): String

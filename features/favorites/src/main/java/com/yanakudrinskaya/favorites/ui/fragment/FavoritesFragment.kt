@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.yanakudrinskaya.core.adapter.CoursesAdapter
-import com.yanakudrinskaya.core.models.Course
+import com.yanakudrinskaya.domain.models.Course
 import com.yanakudrinskaya.core.navigation.NavigationContract
 import com.yanakudrinskaya.core.navigation.NavigationDestination
 import com.yanakudrinskaya.core.ui.decorator.ItemOffsetDecoration
 import com.yanakudrinskaya.favorites.databinding.FragmentFavoritesBinding
+import com.yanakudrinskaya.favorites.ui.adapter.FavoritesCoursesAdapter
 import com.yanakudrinskaya.favorites.ui.view_model.FavoriteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,17 +28,14 @@ class FavoritesFragment : Fragment() {
     @Inject
     lateinit var navigator: NavigationContract
 
-    private var _coursesAdapter: CoursesAdapter? = null
+    private var _coursesAdapter: FavoritesCoursesAdapter? = null
     private val coursesAdapter get() = _coursesAdapter!!
-
-    private val navigationContract: NavigationContract?
-        get() = activity as? NavigationContract
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,7 +48,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        _coursesAdapter = CoursesAdapter(
+        _coursesAdapter = FavoritesCoursesAdapter(
             onItemClick = { course ->
                 onCourseClick(course)
             },

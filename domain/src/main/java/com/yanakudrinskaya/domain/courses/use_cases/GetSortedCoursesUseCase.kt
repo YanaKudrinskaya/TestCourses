@@ -1,8 +1,8 @@
 package com.yanakudrinskaya.domain.courses.use_cases
 
 import com.yanakudrinskaya.domain.courses.api.CoursesRepository
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat

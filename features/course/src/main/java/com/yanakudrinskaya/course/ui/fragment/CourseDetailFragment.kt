@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.yanakudrinskaya.core.navigation.NavigationContract
 import com.yanakudrinskaya.core.utils.formatDate
 import com.yanakudrinskaya.course.databinding.FragmentCourseDetailBinding
@@ -29,7 +28,7 @@ class CourseDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         return binding.root
     }
 

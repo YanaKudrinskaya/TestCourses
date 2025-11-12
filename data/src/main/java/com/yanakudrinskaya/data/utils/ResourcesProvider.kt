@@ -1,7 +1,8 @@
-package com.yanakudrinskaya.data.repository
+package com.yanakudrinskaya.data.utils
 
 import android.content.Context
-import com.yanakudrinskaya.core.utils.ResourcesProvider
+import androidx.annotation.StringRes
+import com.yanakudrinskaya.domain.ResourcesProvider
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -9,13 +10,13 @@ import javax.inject.Singleton
 @Singleton
 class ResourcesProviderImpl @Inject internal constructor(
     @ApplicationContext private val context: Context
-) : ResourcesProvider {
+): ResourcesProvider {
 
-    override fun getString(resId: Int): String {
+    override fun getString(@StringRes resId: Int): String {
         return context.getString(resId)
     }
 
-    override fun getString(resId: Int, vararg formatArgs: Any): String {
+    override fun getString(@StringRes resId: Int, vararg formatArgs: Any): String {
         return context.getString(resId, *formatArgs)
     }
 }

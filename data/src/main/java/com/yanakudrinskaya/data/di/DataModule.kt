@@ -3,7 +3,6 @@ package com.yanakudrinskaya.data.di
 import android.content.Context
 import androidx.room.Room
 import com.google.gson.Gson
-import com.yanakudrinskaya.core.utils.ResourcesProvider
 import com.yanakudrinskaya.data.NetworkClient
 import com.yanakudrinskaya.data.db.AppDatabase
 import com.yanakudrinskaya.data.network.CoursesApi
@@ -11,7 +10,8 @@ import com.yanakudrinskaya.data.network.MockInterceptor
 import com.yanakudrinskaya.data.network.RetrofitNetworkClient
 import com.yanakudrinskaya.data.repository.CoursesRepositoryImpl
 import com.yanakudrinskaya.data.repository.FavoriteRepositoryImpl
-import com.yanakudrinskaya.data.repository.ResourcesProviderImpl
+import com.yanakudrinskaya.data.utils.ResourcesProviderImpl
+import com.yanakudrinskaya.domain.ResourcesProvider
 import com.yanakudrinskaya.domain.courses.api.CoursesRepository
 import com.yanakudrinskaya.domain.favorite.FavoriteRepository
 import dagger.Binds

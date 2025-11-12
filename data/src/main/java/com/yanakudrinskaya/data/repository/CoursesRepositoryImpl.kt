@@ -2,9 +2,9 @@ package com.yanakudrinskaya.data.repository
 
 import com.yanakudrinskaya.data.dto.CoursesResponse
 import com.yanakudrinskaya.domain.courses.api.CoursesRepository
-import com.yanakudrinskaya.core.models.Course
-import com.yanakudrinskaya.core.utils.ResponseStatus
-import com.yanakudrinskaya.core.utils.Result
+import com.yanakudrinskaya.domain.models.Course
+import com.yanakudrinskaya.domain.utils.ResponseStatus
+import com.yanakudrinskaya.domain.utils.Result
 import com.yanakudrinskaya.data.NetworkClient
 import com.yanakudrinskaya.data.dto.RequestDto
 import com.yanakudrinskaya.data.mappers.CourseMapper

@@ -17,7 +17,7 @@ import com.yanakudrinskaya.auth.ui.state.LoginUiState
 import com.yanakudrinskaya.auth.ui.view_model.LoginViewModel
 import com.yanakudrinskaya.core.navigation.NavigationContract
 import com.yanakudrinskaya.core.navigation.NavigationDestination
-import com.yanakudrinskaya.core.utils.CyrillicInputFilter
+import com.yanakudrinskaya.domain.utils.CyrillicInputFilter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -120,8 +120,7 @@ class LoginFragment : Fragment() {
 
     private fun navigateToMainScreen() {
         navigator.navigateTo(
-            destination = NavigationDestination.Main,
-            popUpTo = NavigationDestination.Login
+            destination = NavigationDestination.Main
         )
     }
 
